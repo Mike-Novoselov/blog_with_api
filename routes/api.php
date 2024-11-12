@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\Api\UserController;
 
+use \App\Http\Controllers\Api\FileController;
+
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
 //})->middleware('auth:sanctum');
@@ -15,3 +17,5 @@ use \App\Http\Controllers\Api\UserController;
 Route::apiResources([
     'user' => UserController::class,
 ]);
+
+Route::post('upload', [FileController::class, 'upload']);
