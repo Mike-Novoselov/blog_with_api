@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_avatars', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -19,7 +19,8 @@ return new class extends Migration
             // Метод constrained() автоматически добавит внешний ключ с ссылкой на поле id в таблице users,
             // а также применит каскадное удаление.
 
-            $table->string('avatar_path'); // Путь к файлу аватара
+            $table->string('image_path'); // Путь к файлу изображения
+
             $table->timestamps();
 
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_avatars');
+        Schema::dropIfExists('galleries');
     }
 };

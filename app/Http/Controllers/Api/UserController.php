@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
-use App\Http\Resources\UserResource;
-use App\Models\user;
+use App\Http\Resources\User\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
 //        return UserResource::collection(user::all()); //** почему отрабатывает???
-        return UserResource::collection(user::with('user_avatar', 'user_gallery')->get());
+        return UserResource::collection(User::with('userAvatar', 'gallery')->get());
 
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $created_user = user::create($request->validated());
+        $created_user = User::create($request->validated());
         return new UserResource($created_user);
     }
 
@@ -34,8 +34,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return new UserResource(user::with('user_avatar', 'user_gallery')->findOrFail($id));
-//        return new UserResource(user::with('user_avatar', 'user_gallery')->findOrFail($id));
+        return new UserResource(user::with('userAvatar', 'gallery')->findOrFail($id));
+//        return new UserResource(user::with('user_avatar', 'gallerie')->findOrFail($id));
 
         // findOrFail - если введенный id не найден выдаст страничку 404
     }
