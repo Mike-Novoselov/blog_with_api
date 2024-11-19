@@ -19,3 +19,4 @@ Route::apiResources([
 ]);
 
 Route::post('upload', [FileController::class, 'upload']);
+Route::post('user/{user}/avatar', [UserController::class, 'updateAvatar']); //маршрут для обновления аватарки

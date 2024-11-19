@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->id(); // автоинкрементное поле ID
-            $table->string('path'); // строковое поле для хранения пути к файлу
-            //$table->timestamps(); // временные метки created_at и updated_at
+            $table->id();                                            // автоинкрементное поле ID
+            $table->string('path');                          // строковое поле для хранения пути к файлу
+            //$table->timestamps();                                // временные метки created_at и updated_at
         });
     }
 
